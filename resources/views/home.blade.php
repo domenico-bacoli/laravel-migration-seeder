@@ -1,21 +1,38 @@
 @extends('layouts/main')
 
 @section('content')
-<div class="card">
-    @foreach ($trains as $train)
-        
-    <div class="card-details">
-      <h5 class="card-title">Azienda: {{$train->azienda}}</h5>
-      <h6 class="card-subtitle">Stazione di partenza: {{$train->stazione_partenza}}</h6>
-      <div class="card-text">Stazione di arrivo: {{$train->stazione_arrivo}}</div>
-      <div class="card-text">Data di partenza: {{$train->data_partenza}}</div>
-      <div class="card-text">Orario di partenza: {{$train->orario_partenza}}</div>
-      <div class="card-text">Orario di arrivo: {{$train->orario_arrivo}}</div>
-      <div class="card-text">Codice Treno: {{$train->codice_treno}}</div>
-      <div class="card-text">In orario: {{$train->in_orario ? 'Si' : 'No'}}</div>
-      <div class="card-text">Cancellato: {{$train->cancellato ? 'Si' : 'No'}}</div>
-
-    </div>
-    @endforeach
+<div class="container-fluid">
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Azienda</th>
+            <th scope="col">Stazione di partenza</th>
+            <th scope="col">Stazione di arrivo</th>
+            <th scope="col">Data di partenza</th>
+            <th scope="col">Orario di partenza</th>
+            <th scope="col">Orario di arrivo</th>
+            <th scope="col">Codice Treno</th>
+            <th scope="col">In orario</th>
+            <th scope="col">Cancellato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            @foreach ($trains as $train)
+            <td>{{$train->azienda}}</td>
+            <td>{{$train->stazione_partenza}}</td>
+            <td>{{$train->stazione_arrivo}}</td>
+            <td>{{$train->data_partenza}}</td>
+            <td>{{$train->orario_partenza}}</td>
+            <td>{{$train->orario_arrivo}}</td>
+            <td>{{$train->codice_treno}}</td>
+            <td>{{$train->in_orario ? 'Si' : 'No'}}</td>
+            <td>{{$train->cancellato ? 'Si' : 'No'}}</td>
+          </tr>
+            @endforeach
+        </tbody>
+      </table>
+            
 </div>
 @endsection

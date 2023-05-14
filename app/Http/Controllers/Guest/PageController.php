@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index() {
-        $trains = Train::where('data_partenza', '>=', '2023-05-11')->get();
+        // $trains = Train::where('data_partenza', '>=', '2023-05-11')->get();
+        $trains = Train::all();
         return view('home', compact('trains'));
     }
 }

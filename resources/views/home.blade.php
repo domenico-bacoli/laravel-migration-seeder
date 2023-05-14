@@ -14,23 +14,25 @@
             <th scope="col">Orario di arrivo</th>
             <th scope="col">Codice Treno</th>
             <th scope="col">In orario</th>
-            <th scope="col">Cancellato</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            @foreach ($trains as $train)
+        @foreach ($trains as $train)
+          <tr class="{{$train->cancellato == true ? ' cancelled' : ''}}">
             <td>{{$train->azienda}}</td>
             <td>{{$train->stazione_partenza}}</td>
             <td>{{$train->stazione_arrivo}}</td>
             <td>{{$train->data_partenza}}</td>
-            <td>{{$train->orario_partenza}}</td>
-            <td>{{$train->orario_arrivo}}</td>
-            <td>{{$train->codice_treno}}</td>
-            <td>{{$train->in_orario ? 'Si' : 'No'}}</td>
-            <td>{{$train->cancellato ? 'Si' : 'No'}}</td>
+            <td>{{$train->cancellato == true ? 'cancellato' : $train->orario_partenza}}</td>
+            <td>{{$train->cancellato == true ? 'cancellato' : $train->orario_arrivo}}</td>
+            <td>{{$train->cancellato == true ? 'cancellato' : $train->codice_treno}}</td>
+            @if ($train->cancellato == true)
+            <td>{{$train->in_orario = 'cancellato'}}</td>
+            @else
+            <td>{{$train->in_orario ? 'in orario' : 'in ritardo'}}</td>
+            @endif
           </tr>
-            @endforeach
+        @endforeach
         </tbody>
       </table>
             

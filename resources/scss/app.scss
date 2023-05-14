@@ -1,1 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
+
+.cancelled{
+    text-decoration: line-through;
+    color: gray;
+}
